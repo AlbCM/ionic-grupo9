@@ -26,6 +26,7 @@ jobs:
       with:
           python-version: '3.9'
     - name: Instalación de librerías y dependencias
+      working-directory: flaskr
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
@@ -44,11 +45,17 @@ jobs:
         node-version: 12.8
     - name: Instalar dependencies
       run: npm install
+      working-directory: front-end/tutorial-canciones      
     - name: Lint
       run: npm run lint
+      working-directory: front-end/tutorial-canciones   
     - name: Build
       run: npm run build -- --prod
+      working-directory: front-end/tutorial-canciones   
     - name: Test
       run: npm test -- --configuration=ci
+      working-directory: front-end/tutorial-canciones   
     - name: E2E
       run: npm run e2e -- --configuration=ci
+      working-directory: front-end/tutorial-canciones   
+
