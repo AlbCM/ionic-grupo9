@@ -32,7 +32,7 @@ jobs:
         pip install -r requirements.txt
     - name: Correr pruebas
       id: correr-pruebas
-      run: python -m unittest discover -s tests -v
+      run: pytest -v
   job2:
     name: Pruebas Front-End
     runs-on: ubuntu-latest
@@ -45,17 +45,12 @@ jobs:
         node-version: 12.8
     - name: Instalar dependencies
       run: npm install
-      working-directory: front-end/tutorial-canciones      
-    - name: Lint
-      run: npm run lint
-      working-directory: front-end/tutorial-canciones   
+      working-directory: front-end/tutorial-canciones
     - name: Build
-      run: npm run build -- --prod
+      run: npm run build
       working-directory: front-end/tutorial-canciones   
     - name: Test
-      run: npm test -- --configuration=ci
+      run: npm test
       working-directory: front-end/tutorial-canciones   
-    - name: E2E
-      run: npm run e2e -- --configuration=ci
-      working-directory: front-end/tutorial-canciones   
+
 
